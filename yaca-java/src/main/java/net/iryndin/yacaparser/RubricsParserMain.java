@@ -65,7 +65,7 @@ public class RubricsParserMain {
 
         System.out.println("Rubrics with two parents qty: " + twoParentsQty);
 
-        try(PrintWriter out = new PrintWriter("allRubrics.json")) {
+        try(PrintWriter out = new PrintWriter("allRubrics.json", "UTF-8")) {
             out.println(json);
         }
 
