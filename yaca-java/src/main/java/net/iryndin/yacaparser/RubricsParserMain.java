@@ -41,25 +41,51 @@ public class RubricsParserMain {
     private static void writeRubrics(Map<String, YacaRubrics> allRubrics) throws IOException {
         List<SimpleRubrics> allRubricsList = toNodeList(allRubrics.values());
         ObjectMapper om = new ObjectMapper();
-        String json = om.writeValueAsString(allRubricsList);
+        String json = om.writerWithDefaultPrettyPrinter().writeValueAsString(allRubricsList);
 
+        int noParentsQty=0;
         for (SimpleRubrics s : allRubricsList) {
             if (s.getParents().isEmpty()) {
-                System.out.println(s);
+                System.out.println(s.getUrl());
+                noParentsQty++;
             }
         }
+
+        System.out.println("Rubrics with no parents qty: " + noParentsQty);
 
         System.out.println("=============");
 
+        int twoParentsQty =0;
         for (SimpleRubrics s : allRubricsList) {
             if (s.getParents().size()==2) {
-                System.out.println(s);
+                System.out.println(s.getUrl() + " " + printStrings(s.getParents()));
+                twoParentsQty++;
             }
         }
+
+        System.out.println("Rubrics with two parents qty: " + twoParentsQty);
 
         try(PrintWriter out = new PrintWriter("allRubrics.json")) {
             out.println(json);
         }
+
+        System.out.println("Total rubrics: " + allRubricsList.size());
+    }
+
+    private static String printStrings(List<String> parents) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        int i=0;
+        int sz = parents.size();
+        for (String s : parents) {
+            i++;
+            sb.append(s);
+            if (i<sz) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     private static List<SimpleRubrics> toNodeList(Collection<YacaRubrics> nodes) {
