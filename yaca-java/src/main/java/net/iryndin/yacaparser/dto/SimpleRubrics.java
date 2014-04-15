@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by iryndin on 11.04.14.
- */
 public class SimpleRubrics {
 
     private String name;

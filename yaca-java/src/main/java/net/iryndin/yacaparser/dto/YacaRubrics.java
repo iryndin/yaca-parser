@@ -3,9 +3,6 @@ package net.iryndin.yacaparser.dto;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by iryndin on 11.04.14.
- */
 public class YacaRubrics {
 
     private final String name;
