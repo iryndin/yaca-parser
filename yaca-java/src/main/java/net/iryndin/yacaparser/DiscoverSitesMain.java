@@ -57,8 +57,8 @@ public class DiscoverSitesMain {
             }
             rubricsProcessed.add(rubricsUrl);
 
-            ListenableFuture<RubricsWithSites> explosion = executorService.submit(new SiteDiscoverCallable(rubricsUrl));
-            Futures.addCallback(explosion, new FutureCallback<RubricsWithSites>() {
+            ListenableFuture<RubricsWithSites> discoveredSitesFuture = executorService.submit(new SiteDiscoverCallable(rubricsUrl));
+            Futures.addCallback(discoveredSitesFuture, new FutureCallback<RubricsWithSites>() {
                 public void onSuccess(RubricsWithSites result) {
                     putNewDataAndWriteIt(result);
                     System.out.println(result.getUrl() + " COMPLETED");
