@@ -47,7 +47,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>net.iryndin.yacaparser.RubricsParserMain</mainClass>
+                            <mainClass>net.iryndin.yacaparser.DiscoverSitesMain</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
