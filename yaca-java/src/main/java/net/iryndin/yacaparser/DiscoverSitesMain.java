@@ -99,7 +99,7 @@ public class DiscoverSitesMain {
         writeQueue.add(Collections.unmodifiableList(sitesList));
     }
 
-    private static List<SimpleRubrics> readRubrics() throws IOException {
+    public static List<SimpleRubrics> readRubrics() throws IOException {
         ObjectMapper om = new ObjectMapper();
         InputStream in = DiscoverSitesMain.class.getClassLoader().getResourceAsStream("allRubrics.json");
         List<SimpleRubrics> list = om.readValue(in, new TypeReference<List<SimpleRubrics>>() { });
